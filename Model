@@ -1,0 +1,29 @@
+    #linear stack of layers
+    model = Sequential()
+
+    #2D convolutional network
+    model.add(Conv2D(nb_filters, (nb_conv, nb_conv),
+                     padding='valid',
+                     input_shape=(img_channels, img_rows, img_cols)))
+
+    #Rectified Linear Unit activation function
+    convout1 = Activation('relu')
+    model.add(convout1)
+    model.add(Conv2D(nb_filters, (nb_conv, nb_conv)))
+    convout2 = Activation('relu')
+    model.add(convout2)
+
+    #Pooling to decrease feature size
+    model.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
+
+    #To avoid overfitting
+    model.add(Dropout(0.5))
+
+    model.add(Flatten())
+    model.add(Dense(128))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(nb_classes))
+
+    #last layer, classify
+    model.add(Activation('softmax'))
