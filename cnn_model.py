@@ -35,7 +35,7 @@ nb_conv = config["nb_conv"]
 ########################################
 
 WeightFileName = config["WeightFileName"]
-output = ["NOTHING", "SCISSOR", "ROCK", "PAPER"]
+output = ["OK", "NOTHING", "SCISSOR", "ROCK", "PAPER"]
 
 
 # This function does the guessing work based on input images

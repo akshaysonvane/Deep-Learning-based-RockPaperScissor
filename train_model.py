@@ -44,9 +44,9 @@ def train_model(model):
     hist = model.fit(X_train, Y_train, batch_size=batch_size, epochs=nb_epoch,
                      verbose=1, validation_split=0.2)
 
-    visualize_histogram(hist)
-
     model.save_weights("new_weight_"+time.strftime("%Y%m%d-%H%M%S")+".hdf5")
+
+    visualize_training_hist(hist)
 
 
 def initialize():
@@ -109,7 +109,7 @@ def initialize():
     return X_train, X_test, Y_train, Y_test
 
 
-def visualize_histogram(hist):
+def visualize_training_hist(hist):
     # visualizing losses and accuracy
 
     train_loss = hist.history['loss']
@@ -126,8 +126,7 @@ def visualize_histogram(hist):
     plt.title('train_loss vs val_loss')
     plt.grid(True)
     plt.legend(['train', 'val'])
-    # print plt.style.available # use bmh, classic,ggplot for big pictures
-    # plt.style.use(['classic'])
+    plt.savefig("train_loss vs val_loss")
 
     plt.figure(2, figsize=(7, 5))
     plt.plot(xc, train_acc)
@@ -137,8 +136,7 @@ def visualize_histogram(hist):
     plt.title('train_acc vs val_acc')
     plt.grid(True)
     plt.legend(['train', 'val'], loc=4)
-
-    plt.show()
+    plt.savefig("train_acc vs val_acc")
 
 
 def main():

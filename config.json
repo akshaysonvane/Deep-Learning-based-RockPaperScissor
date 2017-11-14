@@ -2,7 +2,7 @@
   "img_rows": 200,
   "img_cols": 200,
   "img_channels": 1,
-  "nb_classes": 4,
+  "nb_classes": 5,
   "nb_epoch": 15,
   "nb_filters": 32,
   "nb_pool": 2,
