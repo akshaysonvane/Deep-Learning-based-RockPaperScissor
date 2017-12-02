@@ -89,7 +89,7 @@ def main():
 
     # Call CNN model loading callback
     print("Loading default weight file")
-    mold = cnn.loadCNN(0)
+    model = cnn.loadCNN(0)
 
     ## Grab camera input
     cap = cv2.VideoCapture(0)
