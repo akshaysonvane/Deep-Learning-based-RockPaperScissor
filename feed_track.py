@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import time
+import redis
 
 import cnn_model as cnn
 
@@ -23,6 +24,8 @@ binary_mode = True
 kernel = np.ones((15, 15), np.uint8)
 kernel2 = np.ones((1, 1), np.uint8)
 skin_kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+
+r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 
 def skin_mask(frame):
@@ -54,7 +57,8 @@ def skin_mask(frame):
     retgesture = cnn.guess_gesture(res)
     if last_gesture != retgesture:
         last_gesture = retgesture
-        print(cnn.output[last_gesture])
+        # print(cnn.output[last_gesture])
+        r.set('gesture', cnn.output[last_gesture])
         time.sleep(0.01)
 
     return res
@@ -78,7 +82,8 @@ def binary_mask(frame):
     retgesture = cnn.guess_gesture(res)
     if last_gesture != retgesture:
         last_gesture = retgesture
-        print(cnn.output[last_gesture])
+        # print(cnn.output[last_gesture])
+        r.set('gesture', cnn.output[last_gesture])
         time.sleep(0.01)
 
     return res
