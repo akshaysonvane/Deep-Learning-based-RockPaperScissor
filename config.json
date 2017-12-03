@@ -7,7 +7,7 @@
   "nb_filters": 32,
   "nb_pool": 2,
   "nb_conv": 3,
-  "WeightFileName": "ori_4015imgs_weights.hdf5",
+  "WeightFileName": "new_weight_20171202-213136.hdf5",
   "batch_size": 32,
   "data_set": "./dataset"
 }
