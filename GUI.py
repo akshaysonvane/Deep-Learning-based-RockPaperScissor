@@ -15,6 +15,8 @@ def show_frame():
     global label_winner
     label_winner.config(text="")
     label_result.config(text="")
+    label_computer_img.config(image=img_nothing)
+    button_ok.config(state="disabled")
 
     def count():
         global label_countdown, count_num, label_computer_img, img_rock, img_paper, img_scissor
@@ -25,6 +27,7 @@ def show_frame():
         else:
             count_num = 4
             label_countdown.config(text="")
+            button_ok.config(state="normal")
 
             gesture_list = [1, 2, 3]
             random.shuffle(gesture_list)
@@ -102,7 +105,8 @@ root.title("Rock Paper Scissor")
 
 label_1 = tk.Label(root, text='Rock Paper Scissor', font=('comic sans', 30)).grid(row=0, column=2)
 
-button_ok = tk.Button(root, text="Play Game", width=25, command=show_frame).grid(row=1, column=2)
+button_ok = tk.Button(root, text="Play Game", width=25, command=show_frame)
+button_ok.grid(row=1, column=2)
 
 label_you = tk.Label(root, text="You", font=('comic sans', 20))
 label_you.grid(row=2, column=0, pady=20)
