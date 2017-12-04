@@ -117,39 +117,39 @@ def main():
             else:
                 roi = skin_mask(frame)
 
-        cv2.imshow('Feed', frame)
-        cv2.imshow('ROI', roi)
+            cv2.imshow('Feed', frame)
+            cv2.imshow('ROI', roi)
 
-        # Keyboard inputs
-        key = cv2.waitKey(10) & 0xff
+            # Keyboard inputs
+            key = cv2.waitKey(10) & 0xff
 
-        ## Use Esc key to close the program
-        if key == 27:
-            break
+            ## Use Esc key to close the program
+            if key == 27:
+                break
 
-        ## Use b key to toggle between binary threshold or skinmask based filters
-        elif key == ord('b'):
-            binary_mode = not binary_mode
-            if binary_mode:
-                print("Binary Threshold filter active")
-            else:
-                print("SkinMask filter active")
+            ## Use b key to toggle between binary threshold or skinmask based filters
+            elif key == ord('b'):
+                binary_mode = not binary_mode
+                if binary_mode:
+                    print("Binary Threshold filter active")
+                else:
+                    print("SkinMask filter active")
 
-        ## Use g key to start gesture predictions via CNN
-        elif key == ord('g'):
-            guess_gesture = not guess_gesture
-            print("Prediction Mode - {}".format(guess_gesture))
+            ## Use g key to start gesture predictions via CNN
+            elif key == ord('g'):
+                guess_gesture = not guess_gesture
+                print("Prediction Mode - {}".format(guess_gesture))
 
 
-        ## Use i,j,k,l to adjust ROI window
-        elif key == ord('i'):
-            y0 = y0 - 5
-        elif key == ord('k'):
-            y0 = y0 + 5
-        elif key == ord('j'):
-            x0 = x0 - 5
-        elif key == ord('l'):
-            x0 = x0 + 5
+            ## Use i,j,k,l to adjust ROI window
+            elif key == ord('i'):
+                y0 = y0 - 5
+            elif key == ord('k'):
+                y0 = y0 + 5
+            elif key == ord('j'):
+                x0 = x0 - 5
+            elif key == ord('l'):
+                x0 = x0 + 5
 
     # Realse & destroy
     cap.release()
